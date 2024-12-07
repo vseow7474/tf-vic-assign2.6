@@ -66,13 +66,13 @@ resource "aws_iam_instance_profile" "test_profile" {
 }
 
 resource "aws_instance" "public" {
-  ami                         = data.aws_ami.amazon2023.id #"ami-04c913012f8977029"
-  instance_type               = var.instance_type # "t2.micro"
+  ami                         = data.aws_ami.amazon2023.id     #"ami-04c913012f8977029"
+  instance_type               = var.instance_type              # "t2.micro"
   subnet_id                   = data.aws_subnets.public.ids[0] #Public Subnet ID, e.g. subnet-xxxxxxxxxxx "subnet-0caaf48818e0596cc"
   associate_public_ip_address = true
   # key_name                    = "victor-terraform-pair" #Change to your keyname, e.g. jazeel-key-pair
-  vpc_security_group_ids      = [aws_security_group.allow_ssh.id]
-  iam_instance_profile = aws_iam_instance_profile.test_profile.name
+  vpc_security_group_ids = [aws_security_group.allow_ssh.id]
+  iam_instance_profile   = aws_iam_instance_profile.test_profile.name
 
   tags = {
     Name = "${var.name_prefix}-ec2" # Prefix your own name, e.g. jazeel-ec2

@@ -51,7 +51,7 @@ data "aws_ami" "amazon2023" {
   most_recent = true
 
   filter {
-    name = "name"
+    name   = "name"
     values = ["al2023-ami-2023*-kernel-6.1-x86_64"]
   }
   owners = ["amazon"]
@@ -59,7 +59,7 @@ data "aws_ami" "amazon2023" {
 
 data "aws_vpc" "selected" {
   filter {
-    name = "tag:Name"
+    name   = "tag:Name"
     values = ["*shared*"]
   }
 }
